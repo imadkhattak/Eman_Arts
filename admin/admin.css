@@ -1,0 +1,247 @@
+/* Admin Styles */
+.admin-login {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background: linear-gradient(135deg, var(--orange-subtle), var(--off-white));
+}
+
+.login-container {
+    background: var(--white);
+    padding: 3rem;
+    border-radius: 8px;
+    box-shadow: var(--shadow);
+    width: 100%;
+    max-width: 400px;
+}
+
+.login-header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.login-header h1 {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+}
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.login-button {
+    padding: 1rem;
+    background: var(--orange);
+    color: var(--white);
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: var(--transition);
+    font-family: 'Lato', sans-serif;
+}
+
+.login-button:hover {
+    background: var(--orange-dark);
+    transform: translateY(-2px);
+}
+
+.error-message {
+    color: #dc3545;
+    margin-top: 1rem;
+    text-align: center;
+    display: none;
+}
+
+/* Dashboard Styles */
+.admin-nav {
+    background: var(--dark-gray);
+    color: var(--white);
+    padding: 1rem 2rem;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.admin-nav .nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: var(--container-width);
+    margin: 0 auto;
+}
+
+.logout-button {
+    background: var(--orange);
+    color: var(--white);
+    border: none;
+    padding: 0.5rem 1.5rem;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.logout-button:hover {
+    background: var(--orange-dark);
+}
+
+.admin-main {
+    padding: 2rem;
+    max-width: var(--container-width);
+    margin: 0 auto;
+}
+
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 3rem;
+}
+
+@media (max-width: 1024px) {
+    .dashboard-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.admin-section {
+    background: var(--white);
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: var(--shadow);
+    margin-bottom: 2rem;
+}
+
+.admin-section h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 2px solid var(--orange-subtle);
+}
+
+.add-artwork-form {
+    background: var(--off-white);
+    padding: 1.5rem;
+    border-radius: 6px;
+    margin-bottom: 2rem;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+@media (max-width: 768px) {
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+}
+
+.save-button {
+    background: var(--orange);
+    color: var(--white);
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: var(--transition);
+    font-family: 'Lato', sans-serif;
+    margin-top: 1rem;
+}
+
+.save-button:hover {
+    background: var(--orange-dark);
+    transform: translateY(-2px);
+}
+
+.help-text {
+    color: var(--medium-gray);
+    font-size: 0.85rem;
+    margin-top: 0.25rem;
+    display: block;
+}
+
+/* Artworks List in Admin */
+.artworks-list {
+    margin-top: 2rem;
+}
+
+.artworks-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1rem;
+}
+
+.admin-artwork-card {
+    background: var(--white);
+    border: 1px solid var(--light-gray);
+    border-radius: 4px;
+    overflow: hidden;
+    transition: var(--transition);
+}
+
+.admin-artwork-card:hover {
+    box-shadow: var(--shadow);
+    transform: translateY(-2px);
+}
+
+.admin-artwork-image {
+    width: 100%;
+    height: 150px;
+    background-size: cover;
+    background-position: center;
+}
+
+.admin-artwork-info {
+    padding: 1rem;
+}
+
+.admin-artwork-title {
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+}
+
+.admin-artwork-price {
+    color: var(--orange);
+    font-weight: 500;
+}
+
+.admin-artwork-actions {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 0.75rem;
+}
+
+.delete-button, .edit-button {
+    flex: 1;
+    padding: 0.5rem;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 0.85rem;
+    transition: var(--transition);
+}
+
+.delete-button {
+    background: #dc3545;
+    color: white;
+}
+
+.delete-button:hover {
+    background: #c82333;
+}
+
+.edit-button {
+    background: var(--light-gray);
+    color: var(--dark-gray);
+}
+
+.edit-button:hover {
+    background: var(--medium-gray);
+    color: var(--white);
+}

@@ -8,14 +8,14 @@
     <link rel="stylesheet" href="styles/components.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Lato:wght@300;400;500&display=swap" rel="stylesheet">
     <link rel="icon" type="image/svg+xml" href="assets/favicons/favicon.svg">
 </head>
 <body>
     <!-- Navigation -->
     <nav class="main-nav">
         <div class="nav-container">
-            <a href="index.html" class="logo">Lina</a>
+            <a href="index.html" class="logo">Alina</a>
             
             <div class="nav-right">
                 <button class="hamburger" aria-label="Menu">
@@ -49,9 +49,9 @@
             <a href="pages/shop.html" class="mobile-nav-link">Gallery</a>
             <a href="pages/studio.html" class="mobile-nav-link">Studio</a>
             <a href="#contact" class="mobile-nav-link">Contact</a>
-            <div class="social-mobile">
-                <a href="https://www.instagram.com/artfulsoul_lina/" class="social-link" target="_blank" rel="noopener">Instagram</a>
-                <a href="https://wa.me/923199928963" class="social-link" target="_blank" rel="noopener">WhatsApp</a>
+            <div class="social-mobile" style="margin-top: 2rem;">
+                <a href="https://www.instagram.com/artfulsoul_lina/" class="mobile-nav-link" style="font-size: 1.2rem;" target="_blank" rel="noopener">Instagram</a>
+                <a href="https://wa.me/923199928963" class="mobile-nav-link" style="font-size: 1.2rem;" target="_blank" rel="noopener">WhatsApp</a>
             </div>
         </div>
     </div>
@@ -59,15 +59,34 @@
     <!-- Hero Section -->
     <main class="hero">
         <div class="hero-content">
+            <!-- Add this before hero-content -->
+            <div class="hero-image-collage">
+                <div class="collage-image collage-1" style="background-image: url('images/artworks/hero-1.jpg')"></div>
+                <div class="collage-image collage-2" style="background-image: url('images/artworks/hero-2.jpg')"></div>
+                <div class="collage-image collage-3" style="background-image: url('images/artworks/hero-3.jpg')"></div>
+            </div>
             <h1 class="hero-title">Artful Expressions<br>of Feminine Form</h1>
-            <p class="hero-subtitle">Original paintings exploring contemporary femininity<br>and sensuality through minimalist abstraction</p>
+            <p class="hero-subtitle">Original hand-painted works exploring contemporary femininity<br>and sensuality through minimalist abstraction</p>
             <a href="pages/shop.html" class="cta-button">View Collection</a>
         </div>
         
+        <!-- Multiple images grid on the right -->
         <div class="hero-image-grid">
-            <div class="image-tile" style="background-image: url('images/artworks/hero-1.jpg')"></div>
-            <div class="image-tile" style="background-image: url('images/artworks/hero-2.jpg')"></div>
-            <div class="image-tile" style="background-image: url('images/artworks/hero-3.jpg')"></div>
+            <!-- Large image spanning 2 rows -->
+            <div class="image-tile image-tile-large" style="background-image: url('images/artworks/pencilsketchadjusted-2112444.jpeg')">
+                <div class="image-overlay"></div>
+            </div>
+            <!-- Two smaller images stacked -->
+            <div class="image-tile image-tile-small" style="background-image: url('images/artworks/5aa0eca087456ff31d8b4569_da39a3ee5e6b4b0d3255bfef95601890afd80709.jpg')">
+                <div class="image-overlay"></div>
+            </div>
+            <div class="image-tile image-tile-small" style="background-image: url('images/artworks/6072383-QQZTYNYR-7.jpg')">
+                <div class="image-overlay"></div>
+            </div>
+            <!-- Additional image -->
+            <div class="image-tile image-tile-medium" style="background-image: url('images/artworks/il_600x600.7486580279_fmk2.webp')">
+                <div class="image-overlay"></div>
+            </div>
         </div>
     </main>
 
@@ -75,12 +94,19 @@
     <section class="artist-intro">
         <div class="intro-container">
             <div class="intro-text">
-                <h2>Alina Khattak</h2>
+                <h2>Lina's Artistic Journey</h2>
                 <p>Independent artist exploring the intersection of contemporary femininity, minimalist abstraction, and emotional depth. Each piece is a carefully composed study of form, color, and intimate expression.</p>
-                <p>Working from a light-filled studio, Lina creates archival-quality paintings that capture moments of vulnerability, strength, and sensual beauty.</p>
+                <p>Working from a light-filled studio in Karachi, Lina creates archival-quality paintings that capture moments of vulnerability, strength, and sensual beauty. Every artwork is hand-painted with meticulous attention to detail and authenticity.</p>
+                <a href="pages/studio.html" class="cta-button" style="margin-top: 1rem;">Learn More</a>
             </div>
             <div class="intro-image">
-                <div class="image-frame"></div>
+               <!-- Replace with this single correct version -->
+                <div class="image-frame">
+                    <div class="image-frame-inner" style="background-image: url('images/artist/lina-portrait.jpg')">
+                        <div class="image-frame-border"></div>
+                    </div>
+                </div>
+            
             </div>
         </div>
     </section>
@@ -92,8 +118,21 @@
             <a href="pages/shop.html" class="view-all">View All →</a>
         </div>
         
+        <!-- Artwork Grid - Images will be loaded from main.js -->
+        <!-- Image paths should follow this format: images/artworks/[filename].jpg -->
+        <!-- Example: images/artworks/ethereal-1.jpg -->
         <div class="artworks-grid" id="featured-grid">
-            <!-- Dynamically loaded from JSON -->
+            <!-- Dynamically loaded from main.js -->
+            <!-- To add images manually, use this format:
+            <a href="pages/artwork-detail.html?id=1" class="artwork-card">
+                <div class="artwork-image" style="background-image: url('images/artworks/your-image.jpg')"></div>
+                <div class="artwork-info">
+                    <h3 class="artwork-title">Artwork Title</h3>
+                    <p class="artwork-details">Medium • Size</p>
+                    <p class="artwork-price">$0,000</p>
+                </div>
+            </a>
+            -->
         </div>
     </section>
 
@@ -150,7 +189,7 @@
             <div class="footer-section">
                 <h4>Studio</h4>
                 <p>By appointment only</p>
-                <p>Peshawar, Pakistan</p>
+                <p>Karachi, Pakistan</p>
             </div>
             
             <div class="footer-section">
@@ -158,7 +197,7 @@
                 <div class="footer-social">
                     <a href="https://www.instagram.com/artfulsoul_lina/" target="_blank" rel="noopener">Instagram</a>
                     <a href="https://wa.me/923199928963" target="_blank" rel="noopener">WhatsApp</a>
-                    <a href="mailto:studio@artfullina.com">Email</a>
+                    <a href="/cdn-cgi/l/email-protection#196a6d6c7d707659786b6d7f6c7575707778377a7674">Email</a>
                 </div>
             </div>
             
@@ -176,7 +215,4 @@
         </div>
     </footer>
 
-    <script src="scripts/main.js"></script>
-    <script src="scripts/cart.js"></script>
-</body>
-</html>
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd

@@ -3,11 +3,133 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Shop — Artista Minimal</title>
+  <title>Gallery – Lina Art Studio</title>
   <link rel="stylesheet" href="../styles/main.css">
+  <link rel="stylesheet" href="../styles/components.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Lato:wght@300;400;500&display=swap" rel="stylesheet">
 </head>
 <body>
-  <h1>Shop</h1>
+  <!-- Navigation -->
+  <nav class="main-nav">
+    <div class="nav-container">
+      <a href="../index.html" class="logo">Lina</a>
+      
+      <div class="nav-right">
+        <button class="hamburger" aria-label="Menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+        
+        <div class="nav-menu">
+          <a href="../index.html" class="nav-link">Home</a>
+          <a href="shop.html" class="nav-link">Gallery</a>
+          <a href="studio.html" class="nav-link">Studio</a>
+          <a href="../index.html#contact" class="nav-link">Contact</a>
+          <div class="cart-icon" data-cart-count="0">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+              <path d="M6 2L3 6V20C3 20.5304 3.21071 21.0391 3.58579 21.4142C3.96086 21.7893 4.46957 22 5 22H19C19.5304 22 20.0391 21.7893 20.4142 21.4142C20.7893 21.0391 21 20.5304 21 20V6L18 2H6Z" stroke="currentColor" stroke-width="2"/>
+              <path d="M3 6H21" stroke="currentColor" stroke-width="2"/>
+              <path d="M16 10C16 11.0609 15.5786 12.0783 14.8284 12.8284C14.0783 13.5786 13.0609 14 12 14C10.9391 14 9.92172 13.5786 9.17157 12.8284C8.42143 12.0783 8 11.0609 8 10" stroke="currentColor" stroke-width="2"/>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Mobile Menu Overlay -->
+  <div class="mobile-menu-overlay">
+    <div class="mobile-menu">
+      <button class="close-menu" aria-label="Close menu">×</button>
+      <a href="../index.html" class="mobile-nav-link">Home</a>
+      <a href="shop.html" class="mobile-nav-link">Gallery</a>
+      <a href="studio.html" class="mobile-nav-link">Studio</a>
+      <a href="../index.html#contact" class="mobile-nav-link">Contact</a>
+    </div>
+  </div>
+
+  <!-- Gallery Header -->
+  <section class="shop-header">
+    <h1>Gallery</h1>
+    <p>Original hand-painted artworks exploring contemporary femininity and sensuality</p>
+  </section>
+
+  <!-- Filters -->
+  <div class="shop-filters">
+    <button class="filter-button active" data-filter="all">All Works</button>
+    <button class="filter-button" data-filter="oil">Oil on Canvas</button>
+    <button class="filter-button" data-filter="acrylic">Acrylic</button>
+    <button class="filter-button" data-filter="mixed">Mixed Media</button>
+    <button class="filter-button" data-filter="watercolor">Watercolor</button>
+  </div>
+
+  <!-- Gallery Grid -->
+  <section class="shop-grid">
+    <div class="artworks-grid" id="gallery-grid">
+      <!-- Dynamically loaded -->
+    </div>
+  </section>
+
+  <!-- Cart Sidebar -->
+  <div class="cart-sidebar">
+    <div class="cart-header">
+      <h3>Your Selection</h3>
+      <button class="close-cart">×</button>
+    </div>
+    <div class="cart-items">
+      <!-- Cart items loaded dynamically -->
+    </div>
+    <div class="cart-footer">
+      <div class="cart-total">
+        <span>Total</span>
+        <span class="total-price">$0.00</span>
+      </div>
+      <a href="checkout.html" class="checkout-button">Proceed to Checkout</a>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="main-footer">
+    <div class="footer-content">
+      <div class="footer-section">
+        <span class="footer-logo">Lina</span>
+        <p>Contemporary Art Studio</p>
+      </div>
+      
+      <div class="footer-section">
+        <h4>Studio</h4>
+        <p>By appointment only</p>
+        <p>Karachi, Pakistan</p>
+      </div>
+      
+      <div class="footer-section">
+        <h4>Connect</h4>
+        <div class="footer-social">
+          <a href="https://www.instagram.com/artfulsoul_lina/" target="_blank" rel="noopener">Instagram</a>
+          <a href="https://wa.me/923199928963" target="_blank" rel="noopener">WhatsApp</a>
+          <a href="mailto:studio@artfullina.com">Email</a>
+        </div>
+      </div>
+      
+      <div class="footer-section">
+        <h4>Services</h4>
+        <p>Original Artworks</p>
+        <p>Custom Commissions</p>
+        <p>Worldwide Shipping</p>
+      </div>
+    </div>
+    
+    <div class="footer-bottom">
+      <p>© 2024 Lina Art Studio. All rights reserved.</p>
+      <p>Archival quality materials • Certificate of authenticity included</p>
+    </div>
+  </footer>
+
   <script src="../scripts/main.js"></script>
+  <script src="../scripts/cart.js"></script>
+  <script src="../scripts/gallery.js"></script>
 </body>
 </html>

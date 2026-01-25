@@ -1,0 +1,14 @@
+{
+  "artworks": [],
+  "artist": {
+    "name": "Lina",
+    "bio": "Independent artist exploring the intersection of contemporary femininity, minimalist abstraction, and emotional depth.",
+    "image": "images/artist/lina-portrait.jpg"
+  },
+  "users": [
+    {
+      "username": "admin",
+      "password": "lina2025"
+    }
+  ]
+}
