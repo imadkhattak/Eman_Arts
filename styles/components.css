@@ -1293,3 +1293,181 @@
         margin: 0 auto;
     }
 }
+
+
+/* ============================================
+   LIGHTBOX / MODAL STYLES
+   ============================================ */
+
+.lightbox-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.85);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2000;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    backdrop-filter: blur(4px);
+}
+
+.lightbox-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.lightbox-container {
+    position: relative;
+    background: var(--white);
+    border-radius: 4px;
+    max-width: 90vw;
+    max-height: 90vh;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    animation: slideInUp 0.4s ease;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+}
+
+@keyframes slideInUp {
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.lightbox-close {
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    background: rgba(255, 255, 255, 0.95);
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    font-size: 1.5rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--black);
+    transition: var(--transition);
+    z-index: 2001;
+}
+
+.lightbox-close:hover {
+    background: var(--orange);
+    color: var(--white);
+    transform: rotate(90deg);
+}
+
+.lightbox-image {
+    width: 100%;
+    height: auto;
+    max-height: 70vh;
+    object-fit: contain;
+    display: block;
+}
+
+.lightbox-info {
+    padding: 2rem;
+    background: var(--white);
+    border-top: 1px solid var(--light-gray);
+}
+
+.lightbox-title {
+    font-size: 1.5rem;
+    font-weight: 400;
+    color: var(--black);
+    margin: 0 0 0.5rem 0;
+    font-family: 'Cormorant Garamond', serif;
+}
+
+.lightbox-details {
+    color: var(--medium-gray);
+    font-size: 0.95rem;
+    margin: 0 0 0.75rem 0;
+    font-family: 'Lato', sans-serif;
+}
+
+.lightbox-price {
+    color: var(--orange);
+    font-size: 1.25rem;
+    font-weight: 500;
+    margin: 0;
+    font-family: 'Lato', sans-serif;
+}
+
+/* Responsive Lightbox */
+@media (max-width: 768px) {
+    .lightbox-container {
+        max-width: 95vw;
+        max-height: 95vh;
+    }
+
+    .lightbox-close {
+        top: 1rem;
+        right: 1rem;
+        width: 36px;
+        height: 36px;
+        font-size: 1.25rem;
+    }
+
+    .lightbox-image {
+        max-height: 60vh;
+    }
+
+    .lightbox-info {
+        padding: 1.5rem;
+    }
+
+    .lightbox-title {
+        font-size: 1.25rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .lightbox-container {
+        max-width: 100vw;
+        max-height: 100vh;
+        border-radius: 0;
+    }
+
+    .lightbox-image {
+        max-height: 50vh;
+    }
+
+    .lightbox-info {
+        padding: 1rem;
+    }
+
+    .lightbox-title {
+        font-size: 1.125rem;
+    }
+
+    .lightbox-details {
+        font-size: 0.875rem;
+    }
+
+    .lightbox-price {
+        font-size: 1.125rem;
+    }
+}
+
+/* Make artwork images clickable */
+.artwork-image {
+    cursor: pointer;
+}
+
+.artwork-image:hover {
+    opacity: 0.95;
+}

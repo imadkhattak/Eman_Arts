@@ -91,18 +91,35 @@
     </div>
   </div>
 
+  <!-- Lightbox Modal -->
+  <div class="lightbox-overlay">
+    <div class="lightbox-container">
+      <button class="lightbox-close" aria-label="Close">×</button>
+      <img class="lightbox-image" src="" alt="Artwork">
+      <div class="lightbox-info">
+        <h3 class="lightbox-title"></h3>
+        <p class="lightbox-details"></p>
+        <p class="lightbox-price"></p>
+      </div>
+    </div>
+  </div>
+
   <!-- Footer -->
   <footer class="main-footer">
     <div class="footer-content">
       <div class="footer-section">
         <span class="footer-logo">Lina</span>
         <p>Contemporary Art Studio</p>
+        <!-- Admin Access Link - Subtle -->
+        <div id="admin-access" style="margin-top: 1.5rem; display: none;">
+          <a href="../admin/dashboard.html" class="admin-link" style="font-size: 0.85rem; color: #999; text-decoration: none; border-bottom: 1px dotted #ccc; padding-bottom: 0.25rem;">Admin</a>
+        </div>
       </div>
       
       <div class="footer-section">
         <h4>Studio</h4>
         <p>By appointment only</p>
-        <p>Karachi, Pakistan</p>
+        <p>Peshawar, Pakistan</p>
       </div>
       
       <div class="footer-section">
@@ -114,16 +131,6 @@
         </div>
       </div>
 
-          <!-- In both shop.html and studio.html, update the first footer-section -->
-    <div class="footer-section">
-        <span class="footer-logo">Lina</span>
-        <p>Contemporary Art Studio</p>
-        <!-- Admin Access Link -->
-        <div id="admin-access" style="margin-top: 1rem; display: none;">
-            <a href="../admin/dashboard.html" class="admin-link">Admin Dashboard</a>
-        </div>
-    </div>
-          
       <div class="footer-section">
         <h4>Services</h4>
         <p>Original Artworks</p>
@@ -141,5 +148,6 @@
   <script src="../scripts/main.js"></script>
   <script src="../scripts/cart.js"></script>
   <script src="../scripts/gallery.js"></script>
+  <script src="../scripts/lightbox.js"></script>
 </body>
 </html>

@@ -9,7 +9,7 @@ const artworks = [
         category: "oil",
         size: "80 × 100 cm",
         price: 3200,
-        image: "../images/artworks/pencilsketchadjusted-2112444.jpeg",
+        image: "../images/artworks/12242031-LCRXFHYH-7.jpg",
         description: "A contemplative study in feminine form and light, exploring the delicate balance between strength and vulnerability.",
         available: true
     },

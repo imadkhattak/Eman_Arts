@@ -6,96 +6,207 @@
     <title>Admin Dashboard - Lina Art Studio</title>
     <link rel="stylesheet" href="../styles/main.css">
     <link rel="stylesheet" href="admin.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body class="admin-dashboard">
+    <!-- Admin Navigation -->
     <nav class="admin-nav">
-        <div class="nav-container">
-            <a href="../index.html" class="logo">Lina</a>
-            <span>Admin Dashboard</span>
-            <button id="logoutButton" class="logout-button">Logout</button>
+        <div class="admin-nav-container">
+            <div class="admin-nav-left">
+                <a href="../index.html" class="admin-logo">Lina Studio</a>
+                <span class="admin-nav-title">Admin Dashboard</span>
+            </div>
+            <div class="admin-nav-right">
+                <span class="admin-user-info">Administrator</span>
+                <button id="logoutButton" class="admin-logout-btn">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+                        <polyline points="16 17 21 12 16 7"></polyline>
+                        <line x1="21" y1="12" x2="9" y2="12"></line>
+                    </svg>
+                    Logout
+                </button>
+            </div>
         </div>
     </nav>
-    
-    <main class="admin-main">
-        <div class="dashboard-grid">
-            <!-- Manage Artworks Section -->
-            <section class="admin-section">
-                <h2>Manage Artworks</h2>
-                
-                <div class="add-artwork-form">
+
+    <!-- Sidebar Navigation -->
+    <div class="admin-container">
+        <aside class="admin-sidebar">
+            <nav class="admin-sidebar-nav">
+                <a href="#artworks-section" class="admin-sidebar-link active" data-section="artworks">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="3" y="3" width="18" height="18" rx="2"></rect>
+                        <line x1="9" y1="9" x2="15" y2="9"></line>
+                        <line x1="9" y1="15" x2="15" y2="15"></line>
+                    </svg>
+                    Manage Artworks
+                </a>
+                <a href="#artist-section" class="admin-sidebar-link" data-section="artist">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                        <circle cx="12" cy="7" r="4"></circle>
+                    </svg>
+                    Artist Profile
+                </a>
+                <a href="#gallery-section" class="admin-sidebar-link" data-section="gallery">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path>
+                        <circle cx="12" cy="13" r="4"></circle>
+                    </svg>
+                    Gallery Preview
+                </a>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="admin-main">
+            <!-- Dashboard Header -->
+            <div class="admin-header">
+                <div>
+                    <h1>Dashboard</h1>
+                    <p class="admin-header-subtitle">Manage your art collection and artist profile</p>
+                </div>
+                <div class="admin-stats">
+                    <div class="stat-card">
+                        <div class="stat-value" id="stat-artworks">0</div>
+                        <div class="stat-label">Artworks</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value" id="stat-last-update">—</div>
+                        <div class="stat-label">Last Update</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Artworks Section -->
+            <section id="artworks-section" class="admin-section">
+                <div class="section-header">
+                    <h2>Manage Artworks</h2>
+                    <p>Add, edit, or remove artworks from your collection</p>
+                </div>
+
+                <!-- Add Artwork Form -->
+                <div class="admin-card add-artwork-card">
                     <h3>Add New Artwork</h3>
-                    <form id="addArtworkForm">
-                        <div class="form-row">
+                    <form id="addArtworkForm" class="admin-form">
+                        <div class="form-grid">
                             <div class="form-group">
-                                <label for="artworkTitle">Title</label>
-                                <input type="text" id="artworkTitle" required>
+                                <label for="artworkTitle">Artwork Title *</label>
+                                <input type="text" id="artworkTitle" required placeholder="e.g., Ethereal No. 1">
                             </div>
                             <div class="form-group">
-                                <label for="artworkPrice">Price ($)</label>
-                                <input type="number" id="artworkPrice" required>
-                            </div>
-                        </div>
-                        
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label for="artworkMedium">Medium</label>
-                                <input type="text" id="artworkMedium" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="artworkSize">Size</label>
-                                <input type="text" id="artworkSize" placeholder="80 × 100 cm">
+                                <label for="artworkPrice">Price ($) *</label>
+                                <input type="number" id="artworkPrice" required placeholder="2400" step="100">
                             </div>
                         </div>
-                        
+
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="artworkMedium">Medium *</label>
+                                <input type="text" id="artworkMedium" required placeholder="e.g., Oil on Canvas">
+                            </div>
+                            <div class="form-group">
+                                <label for="artworkSize">Size *</label>
+                                <input type="text" id="artworkSize" required placeholder="e.g., 80 × 100 cm">
+                            </div>
+                        </div>
+
                         <div class="form-group">
-                            <label for="artworkImage">Image URL</label>
-                            <input type="text" id="artworkImage" placeholder="images/artworks/filename.jpg" required>
-                            <small class="help-text">Relative path from website root</small>
+                            <label for="artworkImage">Image Path *</label>
+                            <input type="text" id="artworkImage" required placeholder="images/artworks/filename.jpg">
+                            <small class="form-hint">Use relative path from website root. Example: images/artworks/painting.jpg</small>
                         </div>
-                        
+
                         <div class="form-group">
                             <label for="artworkDescription">Description</label>
-                            <textarea id="artworkDescription" rows="3"></textarea>
+                            <textarea id="artworkDescription" rows="3" placeholder="Brief description of the artwork..."></textarea>
                         </div>
-                        
-                        <button type="submit" class="save-button">Add Artwork</button>
+
+                        <button type="submit" class="btn btn-primary">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <line x1="12" y1="5" x2="12" y2="19"></line>
+                                <line x1="5" y1="12" x2="19" y2="12"></line>
+                            </svg>
+                            Add Artwork
+                        </button>
                     </form>
                 </div>
-                
-                <!-- Existing Artworks -->
-                <div class="artworks-list">
-                    <h3>Existing Artworks</h3>
-                    <div id="artworksContainer" class="artworks-grid">
-                        <!-- Dynamically loaded -->
+
+                <!-- Artworks List -->
+                <div class="admin-card">
+                    <h3>Your Artworks</h3>
+                    <div id="artworksContainer" class="artworks-list">
+                        <div class="empty-state">
+                            <p>No artworks yet. Add your first artwork above.</p>
+                        </div>
                     </div>
                 </div>
             </section>
-            
-            <!-- Artist Info Section -->
-            <section class="admin-section">
-                <h2>Artist Information</h2>
-                <form id="artistForm">
-                    <div class="form-group">
-                        <label for="artistName">Artist Name</label>
-                        <input type="text" id="artistName" value="Lina">
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="artistBio">Bio</label>
-                        <textarea id="artistBio" rows="4">Independent artist exploring the intersection of contemporary femininity, minimalist abstraction, and emotional depth.</textarea>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="artistImage">Portrait Image URL</label>
-                        <input type="text" id="artistImage" value="images/artist/lina-portrait.jpg">
-                    </div>
-                    
-                    <button type="submit" class="save-button">Update Artist Info</button>
-                </form>
+
+            <!-- Artist Profile Section -->
+            <section id="artist-section" class="admin-section">
+                <div class="section-header">
+                    <h2>Artist Profile</h2>
+                    <p>Update your artist information and profile image</p>
+                </div>
+
+                <div class="admin-card">
+                    <form id="artistForm" class="admin-form">
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="artistName">Artist Name *</label>
+                                <input type="text" id="artistName" required placeholder="Your name">
+                            </div>
+                            <div class="form-group">
+                                <label for="artistEmail">Email *</label>
+                                <input type="email" id="artistEmail" required placeholder="your@email.com">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="artistBio">Bio / Artist Statement *</label>
+                            <textarea id="artistBio" rows="5" required placeholder="Tell your story..."></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="artistImage">Profile Image Path</label>
+                            <input type="text" id="artistImage" placeholder="images/artist/profile.jpg">
+                            <small class="form-hint">Use relative path from website root</small>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"></path>
+                                <polyline points="17 21 17 13 7 13 7 21"></polyline>
+                                <polyline points="7 3 7 8 15 8"></polyline>
+                            </svg>
+                            Save Changes
+                        </button>
+                    </form>
+                </div>
             </section>
-        </div>
-    </main>
-    
+
+            <!-- Gallery Preview Section -->
+            <section id="gallery-section" class="admin-section">
+                <div class="section-header">
+                    <h2>Gallery Preview</h2>
+                    <p>Preview how your artworks appear on the website</p>
+                </div>
+
+                <div class="admin-card">
+                    <div id="galleryPreview" class="gallery-preview-grid">
+                        <div class="empty-state">
+                            <p>Add artworks to see preview</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
     <script src="admin.js"></script>
 </body>
 </html>
