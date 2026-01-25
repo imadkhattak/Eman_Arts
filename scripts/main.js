@@ -1,4 +1,4 @@
-// Main JavaScript File
+// main.js - Main JavaScript File with Admin Functionality
 
 document.addEventListener('DOMContentLoaded', function() {
     // Mobile Menu Toggle
@@ -86,6 +86,19 @@ document.addEventListener('DOMContentLoaded', function() {
             imageObserver.observe(img);
         });
     }
+
+    // Check admin status
+    checkAdminStatus();
+    
+    // Also check admin status on storage changes (if logged in another tab)
+    window.addEventListener('storage', function(e) {
+        if (e.key === 'adminAuthenticated') {
+            checkAdminStatus();
+        }
+    });
+
+    // Admin link click handler with password protection
+    setupAdminLinkProtection();
 });
 
 // Load Featured Artworks
@@ -246,6 +259,58 @@ function showNotification(message) {
     }, 3000);
 }
 
+// Admin link visibility based on authentication
+function checkAdminStatus() {
+    const adminAccessDiv = document.getElementById('admin-access');
+    
+    if (!adminAccessDiv) return;
+    
+    // Check if admin is logged in
+    const isAdminLoggedIn = sessionStorage.getItem('adminAuthenticated') === 'true';
+    
+    if (isAdminLoggedIn) {
+        adminAccessDiv.style.display = 'block';
+        adminAccessDiv.classList.add('admin-link-visible');
+    } else {
+        adminAccessDiv.style.display = 'none';
+        adminAccessDiv.classList.remove('admin-link-visible');
+    }
+}
+
+// Admin link click handler with password protection
+function setupAdminLinkProtection() {
+    const adminLinks = document.querySelectorAll('a.admin-link, a[href*="admin"]');
+    
+    adminLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            // If admin is already logged in, allow access
+            if (sessionStorage.getItem('adminAuthenticated') === 'true') {
+                return; // Allow normal navigation
+            }
+            
+            // Show password prompt
+            e.preventDefault();
+            const password = prompt('Enter admin password:');
+            
+            // Default password - change this in production
+            const ADMIN_PASSWORD = 'lina2025';
+            
+            if (password === ADMIN_PASSWORD) {
+                // Store authentication
+                sessionStorage.setItem('adminAuthenticated', 'true');
+                
+                // Show admin link
+                checkAdminStatus();
+                
+                // Redirect to admin dashboard
+                window.location.href = this.href;
+            } else if (password !== null) { // Only show alert if user entered something
+                alert('Incorrect password. Access denied.');
+            }
+        });
+    });
+}
+
 // Add CSS for notification animation
 const style = document.createElement('style');
 style.textContent = `
@@ -270,6 +335,16 @@ style.textContent = `
             opacity: 0;
         }
     }
+    
+    /* Admin link visibility animation */
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(-10px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+    
+    .admin-link-visible {
+        animation: fadeIn 0.5s ease forwards;
+    }
 `;
 document.head.appendChild(style);
 
@@ -277,3 +352,4 @@ document.head.appendChild(style);
 window.addToCart = addToCart;
 window.removeFromCart = removeFromCart;
 window.updateCartDisplay = updateCartDisplay;
+window.checkAdminStatus = checkAdminStatus;
