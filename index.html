@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lina | Artful Soul - Contemporary Art</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/components.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/svg+xml" href="assets/favicons/favicon.svg">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="main-nav">
+        <div class="nav-container">
+            <a href="index.html" class="logo">Lina</a>
+            
+            <div class="nav-right">
+                <button class="hamburger" aria-label="Menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                
+                <div class="nav-menu">
+                    <a href="index.html" class="nav-link">Home</a>
+                    <a href="pages/shop.html" class="nav-link">Gallery</a>
+                    <a href="pages/studio.html" class="nav-link">Studio</a>
+                    <a href="#contact" class="nav-link">Contact</a>
+                    <div class="cart-icon" data-cart-count="0">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                            <path d="M6 2L3 6V20C3 20.5304 3.21071 21.0391 3.58579 21.4142C3.96086 21.7893 4.46957 22 5 22H19C19.5304 22 20.0391 21.7893 20.4142 21.4142C20.7893 21.0391 21 20.5304 21 20V6L18 2H6Z" stroke="currentColor" stroke-width="2"/>
+                            <path d="M3 6H21" stroke="currentColor" stroke-width="2"/>
+                            <path d="M16 10C16 11.0609 15.5786 12.0783 14.8284 12.8284C14.0783 13.5786 13.0609 14 12 14C10.9391 14 9.92172 13.5786 9.17157 12.8284C8.42143 12.0783 8 11.0609 8 10" stroke="currentColor" stroke-width="2"/>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu Overlay -->
+    <div class="mobile-menu-overlay">
+        <div class="mobile-menu">
+            <button class="close-menu" aria-label="Close menu">×</button>
+            <a href="index.html" class="mobile-nav-link">Home</a>
+            <a href="pages/shop.html" class="mobile-nav-link">Gallery</a>
+            <a href="pages/studio.html" class="mobile-nav-link">Studio</a>
+            <a href="#contact" class="mobile-nav-link">Contact</a>
+            <div class="social-mobile">
+                <a href="https://www.instagram.com/artfulsoul_lina/" class="social-link" target="_blank" rel="noopener">Instagram</a>
+                <a href="https://wa.me/923199928963" class="social-link" target="_blank" rel="noopener">WhatsApp</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <main class="hero">
+        <div class="hero-content">
+            <h1 class="hero-title">Artful Expressions<br>of Feminine Form</h1>
+            <p class="hero-subtitle">Original paintings exploring contemporary femininity<br>and sensuality through minimalist abstraction</p>
+            <a href="pages/shop.html" class="cta-button">View Collection</a>
+        </div>
+        
+        <div class="hero-image-grid">
+            <div class="image-tile" style="background-image: url('images/artworks/hero-1.jpg')"></div>
+            <div class="image-tile" style="background-image: url('images/artworks/hero-2.jpg')"></div>
+            <div class="image-tile" style="background-image: url('images/artworks/hero-3.jpg')"></div>
+        </div>
+    </main>
+
+    <!-- Artist Intro -->
+    <section class="artist-intro">
+        <div class="intro-container">
+            <div class="intro-text">
+                <h2>Lina's Artistic Journey</h2>
+                <p>Independent artist exploring the intersection of contemporary femininity, minimalist abstraction, and emotional depth. Each piece is a carefully composed study of form, color, and intimate expression.</p>
+                <p>Working from a light-filled studio, Lina creates archival-quality paintings that capture moments of vulnerability, strength, and sensual beauty.</p>
+            </div>
+            <div class="intro-image">
+                <div class="image-frame"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Artworks -->
+    <section class="featured-artworks">
+        <div class="section-header">
+            <h2>Current Collection</h2>
+            <a href="pages/shop.html" class="view-all">View All →</a>
+        </div>
+        
+        <div class="artworks-grid" id="featured-grid">
+            <!-- Dynamically loaded from JSON -->
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section" id="contact">
+        <div class="contact-container">
+            <h2>Commission & Inquiries</h2>
+            <p>For custom commissions, studio visits, or questions about available works</p>
+            
+            <div class="contact-buttons">
+                <a href="https://wa.me/923199928963" class="whatsapp-button" target="_blank" rel="noopener">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12.032 21h-.008c-2.49 0-4.836-.97-6.597-2.732l-2.867 1.027 1.035-2.884C2.498 14.726 1.957 12.19 2.417 9.762 2.987 6.736 5.467 4.256 8.488 3.686c3.698-.72 7.025 1.23 8.47 4.416 1.443 3.184.493 6.88-2.207 9.283-1.443 1.283-3.204 2.09-5.058 2.408l.34-.793zm7.054-9.414c-.084-.145-.307-.233-.643-.233-.168 0-.355.022-.56.084-.205.04-.432.105-.682.188-1.225.462-2.884 1.39-4.317.84-.84-.316-1.512-.987-1.933-1.85-.42-.882-.525-1.932-.294-3.147.042-.232.084-.46.126-.67.042-.19.063-.358.063-.503 0-.19-.064-.337-.188-.46-.126-.105-.274-.147-.46-.147-.19 0-.4.042-.628.126-.232.084-.526.232-.883.44-.357.21-.734.483-1.133.82a6.515 6.515 0 0 0-.903.924c-.378.462-.65.966-.82 1.512-.168.546-.253 1.115-.253 1.724 0 .904.2 1.827.608 2.748.41.924.987 1.806 1.724 2.647 1.012 1.177 2.322 2.165 3.93 2.964 1.61.8 3.242 1.2 4.9 1.2 1.136 0 2.207-.21 3.22-.608.546-.232 1.03-.525 1.45-.882.42-.357.756-.755 1.01-1.177.252-.44.378-.903.378-1.387 0-.42-.126-.755-.378-1.01-.21-.21-.44-.316-.69-.316z"/>
+                    </svg>
+                    Message via WhatsApp
+                </a>
+                
+                <a href="https://www.instagram.com/artfulsoul_lina/" class="instagram-button" target="_blank" rel="noopener">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                    </svg>
+                    Follow on Instagram
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cart Sidebar -->
+    <div class="cart-sidebar">
+        <div class="cart-header">
+            <h3>Your Selection</h3>
+            <button class="close-cart">×</button>
+        </div>
+        <div class="cart-items">
+            <!-- Cart items loaded dynamically -->
+        </div>
+        <div class="cart-footer">
+            <div class="cart-total">
+                <span>Total</span>
+                <span class="total-price">$0.00</span>
+            </div>
+            <a href="pages/checkout.html" class="checkout-button">Proceed to Checkout</a>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <span class="footer-logo">Lina</span>
+                <p>Contemporary Art Studio</p>
+            </div>
+            
+            <div class="footer-section">
+                <h4>Studio</h4>
+                <p>By appointment only</p>
+                <p>Karachi, Pakistan</p>
+            </div>
+            
+            <div class="footer-section">
+                <h4>Connect</h4>
+                <div class="footer-social">
+                    <a href="https://www.instagram.com/artfulsoul_lina/" target="_blank" rel="noopener">Instagram</a>
+                    <a href="https://wa.me/923199928963" target="_blank" rel="noopener">WhatsApp</a>
+                    <a href="mailto:studio@artfullina.com">Email</a>
+                </div>
+            </div>
+            
+            <div class="footer-section">
+                <h4>Services</h4>
+                <p>Original Artworks</p>
+                <p>Custom Commissions</p>
+                <p>Worldwide Shipping</p>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>© 2024 Lina Art Studio. All rights reserved.</p>
+            <p>Archival quality materials • Certificate of authenticity included</p>
+        </div>
+    </footer>
+
+    <script src="scripts/main.js"></script>
+    <script src="scripts/cart.js"></script>
+</body>
+</html>
