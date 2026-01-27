@@ -535,6 +535,22 @@ p {
     color: var(--black);
 }
 
+
+.admin-link {
+    display: block;
+    margin-top: 1rem;
+    font-size: 0.75rem;
+    color: rgba(0, 0, 0, 0.4);
+    text-decoration: none;
+    letter-spacing: 0.05em;
+    transition: color 0.3s ease;
+}
+
+.admin-link:hover {
+    color: var(--orange);
+}
+
+
 .intro-text p {
     font-size: 1.125rem;
     line-height: 1.8;
