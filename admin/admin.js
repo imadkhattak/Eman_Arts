@@ -16,20 +16,23 @@ document.addEventListener('DOMContentLoaded', function() {
 function initializeLogin() {
     const loginForm = document.getElementById('loginForm');
     const errorMessage = document.getElementById('errorMessage');
-    
-    // Admin credentials (in production, use server-side authentication)
-    const ADMIN_CREDENTIALS = {
-        username: 'admin',
-        password: 'lina2025'
-    };
+    const forgotPasswordLink = document.getElementById('forgotPasswordLink');
+
+    if (forgotPasswordLink) {
+        forgotPasswordLink.addEventListener('click', function(e) {
+            e.preventDefault();
+            alert('A password reset link has been sent to the registered email address: studio@artfullina.com');
+        });
+    }
     
     loginForm.addEventListener('submit', function(e) {
         e.preventDefault();
         
         const username = document.getElementById('username').value;
         const password = document.getElementById('password').value;
+        const storedPassword = localStorage.getItem('adminPassword') || 'lina2025';
         
-        if (username === ADMIN_CREDENTIALS.username && password === ADMIN_CREDENTIALS.password) {
+        if (username === 'admin' && password === storedPassword) {
             // Store authentication
             sessionStorage.setItem('adminAuthenticated', 'true');
             sessionStorage.setItem('adminUser', username);
@@ -69,11 +72,61 @@ function initializeDashboard() {
     initializeArtworkManagement();
     initializeArtistInfo();
     initializeSectionNavigation();
+    initializeAccountManagement();
     
     // Load initial data
     loadArtworksForDisplay();
     loadArtistInfoForDisplay();
     updateDashboardStats();
+}
+
+function initializeAccountManagement() {
+    // Check if we need to add a password change section to the dashboard
+    const adminMain = document.querySelector('.admin-main');
+    if (adminMain && !document.getElementById('account-section')) {
+        const accountSection = document.createElement('section');
+        accountSection.id = 'account-section';
+        accountSection.className = 'admin-section';
+        accountSection.innerHTML = `
+            <div class="section-header">
+                <h2>Account Settings</h2>
+                <p>Manage your admin password and security</p>
+            </div>
+            <div class="admin-card">
+                <form id="changePasswordForm" class="admin-form">
+                    <div class="form-group">
+                        <label for="newPassword">New Password</label>
+                        <input type="password" id="newPassword" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Change Password</button>
+                </form>
+            </div>
+        `;
+        adminMain.appendChild(accountSection);
+        
+        // Add link to sidebar
+        const sidebarNav = document.querySelector('.admin-sidebar-nav');
+        const accountLink = document.createElement('a');
+        accountLink.href = '#account-section';
+        accountLink.className = 'admin-sidebar-link';
+        accountLink.innerHTML = `
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+            </svg>
+            Account Security
+        `;
+        sidebarNav.appendChild(accountLink);
+        
+        // Handle password change
+        document.getElementById('changePasswordForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const newPass = document.getElementById('newPassword').value;
+            localStorage.setItem('adminPassword', newPass);
+            alert('Password changed successfully! Please use your new password next time.');
+            document.getElementById('changePasswordForm').reset();
+        });
+    }
 }
 
 // ============================================
@@ -107,6 +160,21 @@ function initializeSectionNavigation() {
 
 function initializeArtworkManagement() {
     const addArtworkForm = document.getElementById('addArtworkForm');
+    const imageUpload = document.getElementById('artworkImageUpload');
+    const imageHidden = document.getElementById('artworkImage');
+    
+    if (imageUpload) {
+        imageUpload.addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(event) {
+                    imageHidden.value = event.target.result;
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+    }
     
     if (addArtworkForm) {
         addArtworkForm.addEventListener('submit', function(e) {
@@ -170,6 +238,13 @@ function loadArtworksForDisplay() {
     // If no artworks in localStorage, use default from gallery.js
     if (artworks.length === 0 && window.artworksData) {
         artworks = window.artworksData;
+        localStorage.setItem('artworks', JSON.stringify(artworks));
+    } else if (artworks.length === 0) {
+        // Fallback to static array if window.artworksData is not yet available
+        artworks = [
+            { id: 1, title: "Ethereal No. 1", price: 3200, medium: "Oil on Canvas", size: "80 × 100 cm", image: "../images/artworks/12242031-LCRXFHYH-7.jpg" },
+            { id: 2, title: "Silhouette Study", price: 2400, medium: "Acrylic & Gold Leaf", size: "60 × 80 cm", image: "../images/artworks/5aa0eca087456ff31d8b4569_da39a3ee5e6b4b0d3255bfef95601890afd80709.jpg" }
+        ];
         localStorage.setItem('artworks', JSON.stringify(artworks));
     }
     
@@ -328,7 +403,11 @@ function updateGalleryPreview(artworks) {
 // ============================================
 
 function updateDashboardStats() {
-    const artworks = JSON.parse(localStorage.getItem('artworks')) || [];
+    let artworks = JSON.parse(localStorage.getItem('artworks')) || [];
+    // If no artworks in localStorage, use default from gallery.js
+    if (artworks.length === 0 && window.artworksData) {
+        artworks = window.artworksData;
+    }
     const artistInfo = JSON.parse(localStorage.getItem('artistInfo'));
     
     // Update artwork count

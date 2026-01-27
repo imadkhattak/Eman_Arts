@@ -115,7 +115,7 @@ async function loadFeaturedArtworks() {
                 medium: "Oil on Canvas",
                 size: "80 × 100 cm",
                 price: 3200,
-                image: "images/artworks/1.jpg"
+                image: "images/artworks/12242031-LCRXFHYH-7.jpg"
             },
             {
                 id: 2,
@@ -123,7 +123,7 @@ async function loadFeaturedArtworks() {
                 medium: "Acrylic & Gold Leaf",
                 size: "60 × 80 cm",
                 price: 2400,
-                image: "images/artworks/2.jpg"
+                image: "images/artworks/5aa0eca087456ff31d8b4569_da39a3ee5e6b4b0d3255bfef95601890afd80709.jpg"
             },
             {
                 id: 3,
@@ -131,7 +131,7 @@ async function loadFeaturedArtworks() {
                 medium: "Mixed Media",
                 size: "90 × 120 cm",
                 price: 4200,
-                image: "images/artworks/3.jpg"
+                image: "images/artworks/6072383-QQZTYNYR-7.jpg"
             },
             {
                 id: 4,
@@ -139,19 +139,20 @@ async function loadFeaturedArtworks() {
                 medium: "Watercolor & Ink",
                 size: "50 × 70 cm",
                 price: 1800,
-                image: "images/artworks/4.jpg"
+                image: "images/artworks/il_600x600.7486580279_fmk2.webp"
             }
         ];
 
         grid.innerHTML = artworks.map(artwork => `
-            <a href="pages/artwork-detail.html?id=${artwork.id}" class="artwork-card">
-                <div class="artwork-image" style="background-image: url('${artwork.image}')"></div>
+            <div class="artwork-card">
+                <div class="artwork-image" style="background-image: url('${artwork.image}')" onclick="openLightbox('${artwork.image}')"></div>
                 <div class="artwork-info">
                     <h3 class="artwork-title">${artwork.title}</h3>
                     <p class="artwork-details">${artwork.medium} • ${artwork.size}</p>
                     <p class="artwork-price">$${artwork.price.toLocaleString()}</p>
+                    <button class="cta-button" onclick='addToCart(${JSON.stringify(artwork)})' style="margin-top: 1rem; padding: 0.75rem 1.5rem; font-size: 0.8rem;">Add to Cart</button>
                 </div>
-            </a>
+            </div>
         `).join('');
     } catch (error) {
         console.error('Error loading artworks:', error);
@@ -277,36 +278,15 @@ function checkAdminStatus() {
     }
 }
 
-// Admin link click handler with password protection
+// Admin link click handler
 function setupAdminLinkProtection() {
-    const adminLinks = document.querySelectorAll('a.admin-link, a[href*="admin"]');
+    const adminLinks = document.querySelectorAll('a.admin-link');
     
     adminLinks.forEach(link => {
         link.addEventListener('click', function(e) {
-            // If admin is already logged in, allow access
-            if (sessionStorage.getItem('adminAuthenticated') === 'true') {
-                return; // Allow normal navigation
-            }
-            
-            // Show password prompt
+            // Redirect directly to admin login page
             e.preventDefault();
-            const password = prompt('Enter admin password:');
-            
-            // Default password - change this in production
-            const ADMIN_PASSWORD = 'lina2025';
-            
-            if (password === ADMIN_PASSWORD) {
-                // Store authentication
-                sessionStorage.setItem('adminAuthenticated', 'true');
-                
-                // Show admin link
-                checkAdminStatus();
-                
-                // Redirect to admin dashboard
-                window.location.href = this.href;
-            } else if (password !== null) { // Only show alert if user entered something
-                alert('Incorrect password. Access denied.');
-            }
+            window.location.href = 'admin/index.html';
         });
     });
 }
@@ -353,3 +333,35 @@ window.addToCart = addToCart;
 window.removeFromCart = removeFromCart;
 window.updateCartDisplay = updateCartDisplay;
 window.checkAdminStatus = checkAdminStatus;
+// Lightbox functionality
+function openLightbox(imageSrc) {
+    const lightbox = document.createElement('div');
+    lightbox.id = 'lightbox';
+    lightbox.style.cssText = `
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.9);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 10000;
+        cursor: zoom-out;
+    `;
+    
+    const img = document.createElement('img');
+    img.src = imageSrc;
+    img.style.cssText = `
+        max-width: 90%;
+        max-height: 90%;
+        object-fit: contain;
+        box-shadow: 0 0 30px rgba(0,0,0,0.5);
+    `;
+    
+    lightbox.appendChild(img);
+    lightbox.onclick = () => document.body.removeChild(lightbox);
+    document.body.appendChild(lightbox);
+}
+window.openLightbox = openLightbox;

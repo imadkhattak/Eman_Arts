@@ -1,13 +1,158 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Checkout — Artista Minimal</title>
-  <link rel="stylesheet" href="../styles/main.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout | Lina Art Gallery</title>
+    <link rel="stylesheet" href="../styles/main.css">
+    <link rel="stylesheet" href="../styles/components.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        .checkout-container {
+            max-width: 1000px;
+            margin: 10rem auto 4rem;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: 1fr 350px;
+            gap: 4rem;
+        }
+        .checkout-form-section {
+            background: white;
+            padding: 2rem;
+            border: 2px solid var(--black);
+        }
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+        .form-group input {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #ddd;
+            font-family: inherit;
+        }
+        .order-summary {
+            background: #f9f9f9;
+            padding: 2rem;
+            border: 1px solid #eee;
+            height: fit-content;
+        }
+        .summary-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+        }
+        .summary-total {
+            border-top: 2px solid var(--black);
+            padding-top: 1rem;
+            margin-top: 1rem;
+            font-weight: 600;
+            font-size: 1.2rem;
+        }
+        @media (max-width: 768px) {
+            .checkout-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
 <body>
-  <h1>Checkout</h1>
-  <script src="../scripts/main.js"></script>
+    <nav class="main-nav">
+        <div class="nav-container">
+            <a href="../index.html" class="logo">Lina</a>
+            <div class="nav-right">
+                <a href="shop.html" class="nav-link">Back to Gallery</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="checkout-container">
+        <div class="checkout-form-section">
+            <h2>Shipping & Payment</h2>
+            <form id="checkoutForm">
+                <div class="form-group">
+                    <label for="name">Full Name</label>
+                    <input type="text" id="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="address">Shipping Address</label>
+                    <input type="text" id="address" required>
+                </div>
+                
+                <h3 style="margin: 2rem 0 1rem;">Payment Details</h3>
+                <div class="form-group">
+                    <label for="card">Card Number</label>
+                    <input type="text" id="card" placeholder="0000 0000 0000 0000" required>
+                </div>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                    <div class="form-group">
+                        <label for="expiry">Expiry Date</label>
+                        <input type="text" id="expiry" placeholder="MM/YY" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="cvv">CVV</label>
+                        <input type="text" id="cvv" placeholder="000" required>
+                    </div>
+                </div>
+                
+                <button type="submit" class="cta-button" style="width: 100%; margin-top: 2rem;">Complete Purchase</button>
+            </form>
+        </div>
+
+        <aside class="order-summary">
+            <h3>Order Summary</h3>
+            <div id="summaryItems" style="margin: 1.5rem 0;">
+                <!-- Items will be loaded here -->
+            </div>
+            <div class="summary-total">
+                <span>Total</span>
+                <span id="summaryTotal">$0.00</span>
+            </div>
+        </aside>
+    </main>
+
+    <script src="../scripts/main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            const summaryItems = document.getElementById('summaryItems');
+            const summaryTotal = document.getElementById('summaryTotal');
+            
+            if (cart.length === 0) {
+                window.location.href = 'shop.html';
+                return;
+            }
+            
+            let total = 0;
+            summaryItems.innerHTML = cart.map(item => {
+                total += item.price * item.quantity;
+                return `
+                    <div class="summary-item">
+                        <span>${item.title} (x${item.quantity})</span>
+                        <span>$${(item.price * item.quantity).toLocaleString()}</span>
+                    </div>
+                `;
+            }).join('');
+            
+            summaryTotal.textContent = `$${total.toLocaleString()}`;
+            
+            document.getElementById('checkoutForm').addEventListener('submit', function(e) {
+                e.preventDefault();
+                alert('Payment processed successfully! Thank you for your order.');
+                localStorage.removeItem('cart');
+                window.location.href = '../index.html';
+            });
+        });
+    </script>
 </body>
 </html>

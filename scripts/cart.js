@@ -38,7 +38,7 @@ function renderCartPage() {
         container.innerHTML = `
             <div class="empty-cart">
                 <p>Your cart is empty</p>
-                <a href="../shop.html" class="cta-button">Continue Shopping</a>
+                <a href="shop.html" class="cta-button">Continue Shopping</a>
             </div>
         `;
         if (totalElement) totalElement.textContent = '$0.00';
