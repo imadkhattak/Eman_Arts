@@ -5,3 +5,11 @@
  5. The artist can access the admin portal by logging in with their credentials. The admin button should be at the footer below 
  "ALINA Original paintings and limited edition prints, created with intention and emotion in the heart of the Pacific Northwest." 
  6. The overall website text is a little bit big like the pics of arts.
+
+
+ Prompt: 2
+
+ 1. There is a navbar in the admin portal in admin portal there should be no navbar. and in the admin login there is also a navbar shown it should not 
+ be shown there. 
+ 2. In the checkout when is checking out also include user to phone number and address, and the shipping fee is not free. 
+ It depends on the distance of the user from the artist.

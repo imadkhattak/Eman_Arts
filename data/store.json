@@ -1,19 +1,6 @@
 {
   "artworks": [
     {
-      "id": "3",
-      "title": "Azure Serenity",
-      "price": 800,
-      "dimensions": "18 x 24 inches",
-      "medium": "Oil on Linen",
-      "year": "2023",
-      "image": "https://images.unsplash.com/photo-1541963463532-d68292c34b19?q=80&w=800&auto=format&fit=crop",
-      "category": "oil",
-      "available": false,
-      "featured": true,
-      "description": "An evocative study of color fields, focusing on the calming properties of deep blues."
-    },
-    {
       "id": "4",
       "title": "Ephemeral Bloom",
       "price": 1500,
@@ -25,6 +12,19 @@
       "available": true,
       "featured": false,
       "description": "Large scale floral abstraction that challenges the boundaries of representative form."
+    },
+    {
+      "id": "1770097534773",
+      "title": "Art_1",
+      "price": 1200,
+      "dimensions": "324",
+      "medium": "200",
+      "year": "2025",
+      "image": "/artworks/1770097534765-download.jpg",
+      "category": "oil",
+      "description": "Art Making",
+      "available": true,
+      "featured": false
     }
   ],
   "artistInfo": {
@@ -34,7 +34,7 @@
     "philosophy": "I believe art should be a silent conversation between the canvas and the viewer, an invitation to pause in a world that never stops.",
     "instagram": "Alina",
     "whatsapp": "+1234567890",
-    "profileImage": "/artworks/1769791736552-14040111984_ab98e6f36e-(1).jpg",
+    "profileImage": "/artworks/1770097564985-download.jpg",
     "backgroundImage": "https://images.unsplash.com/photo-1513364776144-60967b0f800f?q=80&w=1200&auto=format&fit=crop"
   },
   "orders": [
@@ -54,7 +54,7 @@
       "address": "Regi Model town",
       "city": "Peshawar",
       "zip": "25000",
-      "status": "pending",
+      "status": "cancelled",
       "createdAt": "2026-01-30T16:57:31.756Z"
     },
     {

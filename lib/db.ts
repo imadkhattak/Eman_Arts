@@ -26,14 +26,21 @@ export type ArtistInfo = {
   whatsapp: string;
   profileImage: string;
   backgroundImage: string;
+  location: string;
+  zipCode: string;
 };
 
 export type Order = {
   id: string;
   customerName: string;
   customerEmail: string;
+  customerPhone: string;
   items: { id: string; title: string; price: number; quantity: number }[];
   total: number;
+  shippingFee: number;
+  address: string;
+  city: string;
+  zip: string;
   status: 'pending' | 'completed' | 'cancelled';
   createdAt: string;
 };
@@ -42,6 +49,10 @@ export type Customer = {
   id: string;
   name: string;
   email: string;
+  phone: string;
+  address: string;
+  city: string;
+  zip: string;
   orderHistory: string[]; // Order IDs
 };
 

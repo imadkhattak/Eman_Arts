@@ -73,6 +73,8 @@ export default function ArtistProfileManagement() {
       whatsapp: formData.get("whatsapp") as string,
       profileImage: profileImageUrl,
       backgroundImage: backgroundImageUrl,
+      location: formData.get("location") as string,
+      zipCode: formData.get("zipCode") as string,
     };
 
     const updatedData = { ...data, artistInfo: updatedArtistInfo };
@@ -122,6 +124,14 @@ export default function ArtistProfileManagement() {
               <div className="space-y-2">
                 <Label htmlFor="whatsapp">WhatsApp Number</Label>
                 <Input id="whatsapp" name="whatsapp" defaultValue={data.artistInfo.whatsapp} className="rounded-xl" placeholder="+1234567890" />
+              </div>
+              <div className="space-y-2">
+                <Label htmlFor="location">Base Location (City, Country)</Label>
+                <Input id="location" name="location" defaultValue={data.artistInfo.location} className="rounded-xl" placeholder="Paris, France" />
+              </div>
+              <div className="space-y-2">
+                <Label htmlFor="zipCode">Base Zip Code (for shipping)</Label>
+                <Input id="zipCode" name="zipCode" defaultValue={data.artistInfo.zipCode} className="rounded-xl" placeholder="75001" />
               </div>
             </CardContent>
           </Card>

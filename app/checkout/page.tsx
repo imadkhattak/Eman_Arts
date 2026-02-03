@@ -14,6 +14,33 @@ import Image from "next/image";
 export default function CheckoutPage() {
   const { items, totalPrice, clearCart } = useCart();
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [shippingFee, setShippingFee] = useState(0);
+  const [artistZip, setArtistZip] = useState("");
+
+  React.useEffect(() => {
+    fetch("/api/store")
+      .then(res => res.json())
+      .then(data => {
+        if (data.artistInfo?.zipCode) {
+          setArtistZip(data.artistInfo.zipCode);
+        }
+      });
+  }, []);
+
+  const calculateShipping = (userZip: string) => {
+    if (!userZip || !artistZip) return 15; // Base fee if zip unknown
+    const userPrefix = parseInt(userZip.substring(0, 3));
+    const artistPrefix = parseInt(artistZip.substring(0, 3));
+    if (isNaN(userPrefix) || isNaN(artistPrefix)) return 15;
+    
+    const diff = Math.abs(userPrefix - artistPrefix);
+    return 15 + (diff * 0.5); // $15 base + $0.5 per "zip unit"
+  };
+
+  const handleZipChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const fee = calculateShipping(e.target.value);
+    setShippingFee(fee);
+  };
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -22,13 +49,15 @@ export default function CheckoutPage() {
     const orderData = {
       customerName: `${formData.get("firstName")} ${formData.get("lastName")}`,
       customerEmail: formData.get("email"),
+      customerPhone: formData.get("phone"),
       items: items.map(item => ({
         id: item.id,
         title: item.title,
         price: item.price,
         quantity: item.quantity
       })),
-      total: totalPrice,
+      total: totalPrice + shippingFee,
+      shippingFee: shippingFee,
       address: formData.get("address"),
       city: formData.get("city"),
       zip: formData.get("zip")
@@ -58,6 +87,10 @@ export default function CheckoutPage() {
           id: Date.now().toString(),
           name: orderData.customerName,
           email: orderData.customerEmail,
+          phone: orderData.customerPhone as string,
+          address: orderData.address as string,
+          city: orderData.city as string,
+          zip: orderData.zip as string,
           orderHistory: [newOrder.id]
         });
       }
@@ -156,6 +189,10 @@ export default function CheckoutPage() {
                   <Label htmlFor="email" className="text-xs uppercase tracking-widest font-bold text-zinc-400">Email Address</Label>
                   <Input id="email" name="email" type="email" placeholder="jane@example.com" required className="h-12 border-zinc-100 rounded-xl focus-visible:ring-zinc-900 font-sans" />
                 </div>
+                <div className="md:col-span-2 space-y-2">
+                  <Label htmlFor="phone" className="text-xs uppercase tracking-widest font-bold text-zinc-400">Phone Number</Label>
+                  <Input id="phone" name="phone" type="tel" placeholder="+1 (555) 000-0000" required className="h-12 border-zinc-100 rounded-xl focus-visible:ring-zinc-900 font-sans" />
+                </div>
               </div>
             </section>
 
@@ -172,13 +209,13 @@ export default function CheckoutPage() {
                 </div>
                 <div className="space-y-2">
                   <Label htmlFor="zip" className="text-xs uppercase tracking-widest font-bold text-zinc-400">Postal Code</Label>
-                  <Input id="zip" name="zip" placeholder="94110" required className="h-12 border-zinc-100 rounded-xl focus-visible:ring-zinc-900 font-sans" />
+                  <Input id="zip" name="zip" placeholder="94110" required onChange={handleZipChange} className="h-12 border-zinc-100 rounded-xl focus-visible:ring-zinc-900 font-sans" />
                 </div>
               </div>
             </section>
 
             <Button type="submit" className="w-full h-16 rounded-full bg-zinc-900 text-white hover:bg-zinc-800 text-xl font-sans">
-              Complete Purchase • ${totalPrice.toLocaleString()}
+              Complete Purchase • ${(totalPrice + shippingFee).toLocaleString()}
             </Button>
           </form>
         </div>
@@ -214,12 +251,14 @@ export default function CheckoutPage() {
               </div>
               <div className="flex justify-between items-center text-sm font-sans uppercase tracking-widest text-zinc-500">
                 <span>Shipping</span>
-                <span className="text-zinc-900 font-bold">Free</span>
+                <span className="text-zinc-900 font-bold">
+                  {shippingFee > 0 ? `$${shippingFee.toFixed(2)}` : "Calculating..."}
+                </span>
               </div>
               <Separator className="bg-zinc-200" />
               <div className="flex justify-between items-center text-xl font-sans font-medium text-zinc-900">
                 <span>Total</span>
-                <span>${totalPrice.toLocaleString()}</span>
+                <span>${(totalPrice + shippingFee).toLocaleString()}</span>
               </div>
             </div>
 

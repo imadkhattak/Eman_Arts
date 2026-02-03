@@ -6,6 +6,8 @@ import { Footer } from "@/components/Footer";
 import { CartProvider } from "@/context/CartContext";
 import { Toaster } from "@/components/ui/sonner";
 
+import { NavigationWrapper } from "@/components/NavigationWrapper";
+
 const cormorantGaramond = Cormorant_Garamond({
   variable: "--font-serif",
   subsets: ["latin"],
@@ -33,11 +35,11 @@ export default function RootLayout({
         className={`${inter.variable} ${cormorantGaramond.variable} font-sans antialiased bg-white text-zinc-900 scroll-smooth`}
       >
         <CartProvider>
-          <Navbar />
-          <main className="min-h-screen">
-            {children}
-          </main>
-          <Footer />
+          <NavigationWrapper>
+            <main className="min-h-screen">
+              {children}
+            </main>
+          </NavigationWrapper>
           <Toaster />
         </CartProvider>
       </body>
