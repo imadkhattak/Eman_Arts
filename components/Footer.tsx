@@ -1,20 +1,31 @@
 "use client";
 
+import React from "react";
 import Link from "next/link";
-import { Instagram, Mail, Phone } from "lucide-react";
+import { Instagram, Mail, Phone, ExternalLink } from "lucide-react";
+import { usePathname } from "next/navigation";
 
 export function Footer() {
+  const pathname = usePathname();
+  const isAdmin = pathname?.startsWith("/admin");
+
+  if (isAdmin) return null;
   return (
     <footer className="bg-white pt-24 pb-12 border-t border-zinc-50">
       <div className="container mx-auto px-6 md:px-12">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-16">
           <div className="space-y-6">
-            <h2 className="font-serif text-2xl font-medium tracking-tighter text-zinc-900">
-              ALINA
+            <h2 className="font-sans text-2xl font-bold tracking-tighter text-zinc-900">
+               ALINA
             </h2>
             <p className="text-zinc-500 font-sans leading-relaxed max-w-xs text-sm">
               Original paintings and limited edition prints, created with intention and emotion in the heart of the Pacific Northwest.
             </p>
+            <div className="pt-2">
+              <Link href="/admin/login" className="inline-flex items-center gap-2 px-4 py-2 border border-zinc-200 rounded-full text-[10px] uppercase tracking-[0.2em] text-zinc-500 hover:bg-zinc-900 hover:text-white hover:border-zinc-900 transition-all font-sans font-bold shadow-sm">
+                Admin Login <ExternalLink className="w-3 h-3" />
+              </Link>
+            </div>
           </div>
 
           <div className="space-y-6">
@@ -33,14 +44,19 @@ export function Footer() {
               Get in Touch
             </h3>
             <div className="flex flex-col gap-3 md:items-end">
-              <a href="mailto:hello@alina-studio.com" className="flex items-center gap-2 text-sm text-zinc-600 hover:text-zinc-900 transition-colors">
+              <a href="mailto:hello@alina-studio.com" className="flex items-center gap-2 text-sm text-zinc-600 hover:text-zinc-900 transition-colors font-sans">
                 hello@alina-studio.com <Mail className="w-4 h-4" />
               </a>
-              <a href="tel:+1234567890" className="flex items-center gap-2 text-sm text-zinc-600 hover:text-zinc-900 transition-colors">
-                +1 (234) 567-890 <Phone className="w-4 h-4" />
+              <a href="tel:+923199928963" className="flex items-center gap-2 text-sm text-zinc-600 hover:text-zinc-900 transition-colors font-sans">
+                +92 319 9928963 <Phone className="w-4 h-4" />
+              </a>
+              <a href="https://wa.me/923199928963" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-sm text-zinc-600 hover:text-zinc-900 transition-colors font-sans">
+                WhatsApp Us <span className="w-4 h-4 flex items-center justify-center bg-[#25D366] rounded-full text-white text-[10px]">W</span>
               </a>
               <div className="flex gap-4 pt-2 md:justify-end">
-                <Instagram className="w-5 h-5 text-zinc-400 hover:text-zinc-900 cursor-pointer transition-colors" />
+                <a href="https://www.instagram.com/artfulsoul_lina/" target="_blank" rel="noopener noreferrer">
+                  <Instagram className="w-5 h-5 text-zinc-400 hover:text-zinc-900 cursor-pointer transition-colors" />
+                </a>
               </div>
             </div>
           </div>

@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { ShoppingBag, Menu, X, Instagram } from "lucide-react";
+import { ShoppingBag, Menu, X, Instagram, Mail, Phone, ExternalLink } from "lucide-react";
 import { useCart } from "@/context/CartContext";
 import { CartDrawer } from "./CartDrawer";
 import { Button } from "@/components/ui/button";
@@ -24,10 +24,10 @@ export function Navbar() {
 
   return (
     <>
-      <nav className="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md border-b border-zinc-50 h-20 px-6 md:px-12 flex items-center justify-between">
+      <nav className="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md border-b border-zinc-200 h-20 px-6 md:px-12 flex items-center justify-between shadow-subtle">
         <div className="flex-1 flex items-center">
           <Link href="/" className="group">
-            <h1 className="font-serif text-3xl font-medium tracking-tighter text-zinc-900 group-hover:opacity-70 transition-opacity">
+            <h1 className="font-sans text-3xl font-bold tracking-tighter text-zinc-900 group-hover:opacity-70 transition-opacity">
               ALINA
             </h1>
           </Link>
@@ -56,7 +56,7 @@ export function Navbar() {
 
         <div className="flex-1 flex items-center justify-end gap-2 md:gap-6">
           <a
-            href="https://instagram.com"
+            href="https://www.instagram.com/artfulsoul_lina/"
             target="_blank"
             rel="noopener noreferrer"
             className="hidden md:flex items-center text-zinc-400 hover:text-zinc-900 transition-colors"
@@ -107,14 +107,16 @@ export function Navbar() {
                 <Link
                   key={link.name}
                   href={link.href}
-                  className="text-2xl font-serif text-zinc-900"
+                  className="text-2xl font-sans font-bold text-zinc-900"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
                   {link.name}
                 </Link>
               ))}
               <div className="flex gap-6 mt-8">
-                <Instagram className="w-6 h-6 text-zinc-400" />
+                <a href="https://www.instagram.com/artfulsoul_lina/" target="_blank" rel="noopener noreferrer">
+                  <Instagram className="w-6 h-6 text-zinc-400" />
+                </a>
               </div>
             </div>
           </motion.div>

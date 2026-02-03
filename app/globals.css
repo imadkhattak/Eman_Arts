@@ -82,6 +82,29 @@
   --sidebar-ring: oklch(0.708 0 0);
 }
 
+.border-zinc-50 {
+  border-color: theme("colors.zinc.100");
+}
+.border-zinc-100 {
+  border-color: theme("colors.zinc.200");
+}
+.border-zinc-200 {
+  border-color: theme("colors.zinc.300");
+}
+.shadow-subtle {
+  box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+}
+.shadow-subtle-md {
+  box-shadow:
+    0 4px 6px -1px rgb(0 0 0 / 0.05),
+    0 2px 4px -2px rgb(0 0 0 / 0.05);
+}
+.shadow-subtle-lg {
+  box-shadow:
+    0 10px 15px -3px rgb(0 0 0 / 0.05),
+    0 4px 6px -4px rgb(0 0 0 / 0.05);
+}
+
 .dark {
   --background: oklch(0.145 0 0);
   --foreground: oklch(0.985 0 0);
@@ -122,5 +145,17 @@
   }
   body {
     @apply bg-background text-foreground;
+  }
+  h1 {
+    @apply text-4xl md:text-6xl font-serif;
+  }
+  h2 {
+    @apply text-3xl md:text-4xl font-serif;
+  }
+  h3 {
+    @apply text-2xl md:text-3xl font-serif;
+  }
+  p {
+    @apply text-zinc-600 leading-relaxed;
   }
 }

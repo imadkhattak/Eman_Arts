@@ -1,0 +1,7 @@
+ 1. I need to make this website more interactive and user-friendly. I need to add more features to the website. 
+ 2. Like admin portal to manage the artworks, orders, customers, etc. 
+ 3. Through the admin portal artist should be able to add, edit, delete, update the artworks, orders, customers, etc. 
+ 4. like the admin which will be the artist will have have the full control over the website. 
+ 5. The artist can access the admin portal by logging in with their credentials. The admin button should be at the footer below 
+ "ALINA Original paintings and limited edition prints, created with intention and emotion in the heart of the Pacific Northwest." 
+ 6. The overall website text is a little bit big like the pics of arts.
