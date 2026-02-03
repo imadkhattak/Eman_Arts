@@ -15,8 +15,8 @@ export function Footer() {
       <div className="container mx-auto px-6 md:px-12">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-16">
           <div className="space-y-6">
-            <h2 className="font-sans text-2xl font-bold tracking-tighter text-zinc-900">
-               ALINA
+            <h2 className="text-3xl font-sans font-bold tracking-tighter text-zinc-900">
+               EMAN
             </h2>
             <p className="text-zinc-500 font-sans leading-relaxed max-w-xs text-sm">
               Original paintings and limited edition prints, created with intention and emotion in the heart of the Pacific Northwest.
@@ -44,11 +44,11 @@ export function Footer() {
               Get in Touch
             </h3>
             <div className="flex flex-col gap-3 md:items-end">
-              <a href="mailto:hello@alina-studio.com" className="flex items-center gap-2 text-sm text-zinc-600 hover:text-zinc-900 transition-colors font-sans">
-                hello@alina-studio.com <Mail className="w-4 h-4" />
+              <a href="mailto:hello@eman-studio.com" className="flex items-center gap-2 text-sm text-zinc-600 hover:text-zinc-900 transition-colors font-sans">
+                hello@eman-studio.com <Mail className="w-4 h-4" />
               </a>
               <a href="tel:+923199928963" className="flex items-center gap-2 text-sm text-zinc-600 hover:text-zinc-900 transition-colors font-sans">
-                +92 319 9928963 <Phone className="w-4 h-4" />
+                +92 3390624944 <Phone className="w-4 h-4" />
               </a>
               <a href="https://wa.me/923199928963" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-sm text-zinc-600 hover:text-zinc-900 transition-colors font-sans">
                 WhatsApp Us <span className="w-4 h-4 flex items-center justify-center bg-[#25D366] rounded-full text-white text-[10px]">W</span>
@@ -63,8 +63,8 @@ export function Footer() {
         </div>
 
         <div className="pt-8 border-t border-zinc-50 flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="text-[10px] text-zinc-400 tracking-widest uppercase font-sans">
-            &copy; {new Date().getFullYear()} Alina Art Studio. All rights reserved.
+          <p className="text-zinc-500 text-sm font-sans">
+            &copy; {new Date().getFullYear()} EMAN Studio. All rights reserved.
           </p>
           <div className="flex gap-6">
             <span className="text-[10px] text-zinc-400 tracking-widest uppercase font-sans">Secure Checkout</span>

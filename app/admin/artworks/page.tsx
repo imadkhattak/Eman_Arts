@@ -236,66 +236,68 @@ export default function ArtworksManagement() {
       </div>
 
       <div className="bg-white rounded-3xl shadow-sm overflow-hidden">
-        <Table>
-          <TableHeader className="bg-zinc-50">
-            <TableRow className="hover:bg-transparent border-zinc-100">
-              <TableHead className="w-[100px] font-sans text-xs uppercase tracking-widest font-bold">Image</TableHead>
-              <TableHead className="font-sans text-xs uppercase tracking-widest font-bold">Title</TableHead>
-              <TableHead className="font-sans text-xs uppercase tracking-widest font-bold">Price</TableHead>
-              <TableHead className="font-sans text-xs uppercase tracking-widest font-bold">Category</TableHead>
-              <TableHead className="font-sans text-xs uppercase tracking-widest font-bold">Status</TableHead>
-              <TableHead className="text-right font-sans text-xs uppercase tracking-widest font-bold">Actions</TableHead>
-            </TableRow>
-          </TableHeader>
-          <TableBody>
-            {filteredArtworks.map((artwork) => (
-              <TableRow key={artwork.id} className="hover:bg-zinc-50/50 border-zinc-50 transition-colors">
-                <TableCell>
-                  <div className="w-12 h-12 rounded-lg overflow-hidden bg-zinc-100">
-                    {artwork.image ? (
-                      <img src={artwork.image} alt={artwork.title} className="w-full h-full object-cover" />
-                    ) : (
-                      <ImageIcon className="w-full h-full p-2 text-zinc-300" />
-                    )}
-                  </div>
-                </TableCell>
-                <TableCell className="font-sans font-bold text-zinc-900">{artwork.title}</TableCell>
-                <TableCell className="font-sans font-bold">${artwork.price.toLocaleString()}</TableCell>
-                <TableCell className="font-sans capitalize">{artwork.category}</TableCell>
-                <TableCell>
-                  <span className={`text-[10px] uppercase tracking-widest font-bold px-2 py-1 rounded-full ${
-                    artwork.available ? "bg-green-100 text-green-700" : "bg-zinc-100 text-zinc-500"
-                  }`}>
-                    {artwork.available ? "Available" : "Sold"}
-                  </span>
-                </TableCell>
-                <TableCell className="text-right">
-                  <div className="flex justify-end gap-2">
-                    <Button 
-                      variant="ghost" 
-                      size="icon" 
-                      className="rounded-xl hover:bg-zinc-100"
-                      onClick={() => {
-                        setEditingArtwork(artwork);
-                        setIsDialogOpen(true);
-                      }}
-                    >
-                      <Edit2 className="w-4 h-4 text-zinc-500" />
-                    </Button>
-                    <Button 
-                      variant="ghost" 
-                      size="icon" 
-                      className="rounded-xl hover:bg-red-50 hover:text-red-500"
-                      onClick={() => handleDeleteClick(artwork.id)}
-                    >
-                      <Trash2 className="w-4 h-4" />
-                    </Button>
-                  </div>
-                </TableCell>
+        <div className="overflow-x-auto">
+          <Table>
+            <TableHeader className="bg-zinc-50">
+              <TableRow className="hover:bg-transparent border-zinc-100">
+                <TableHead className="w-[100px] font-sans text-xs uppercase tracking-widest font-bold">Image</TableHead>
+                <TableHead className="font-sans text-xs uppercase tracking-widest font-bold">Title</TableHead>
+                <TableHead className="font-sans text-xs uppercase tracking-widest font-bold">Price</TableHead>
+                <TableHead className="font-sans text-xs uppercase tracking-widest font-bold">Category</TableHead>
+                <TableHead className="font-sans text-xs uppercase tracking-widest font-bold">Status</TableHead>
+                <TableHead className="text-right font-sans text-xs uppercase tracking-widest font-bold">Actions</TableHead>
               </TableRow>
-            ))}
-          </TableBody>
-        </Table>
+            </TableHeader>
+            <TableBody>
+              {filteredArtworks.map((artwork) => (
+                <TableRow key={artwork.id} className="hover:bg-zinc-50/50 border-zinc-50 transition-colors">
+                  <TableCell>
+                    <div className="w-12 h-12 rounded-lg overflow-hidden bg-zinc-100">
+                      {artwork.image ? (
+                        <img src={artwork.image} alt={artwork.title} className="w-full h-full object-cover" />
+                      ) : (
+                        <ImageIcon className="w-full h-full p-2 text-zinc-300" />
+                      )}
+                    </div>
+                  </TableCell>
+                  <TableCell className="font-sans font-bold text-zinc-900">{artwork.title}</TableCell>
+                  <TableCell className="font-sans font-bold">${artwork.price.toLocaleString()}</TableCell>
+                  <TableCell className="font-sans capitalize">{artwork.category}</TableCell>
+                  <TableCell>
+                    <span className={`text-[10px] uppercase tracking-widest font-bold px-2 py-1 rounded-full ${
+                      artwork.available ? "bg-green-100 text-green-700" : "bg-zinc-100 text-zinc-500"
+                    }`}>
+                      {artwork.available ? "Available" : "Sold"}
+                    </span>
+                  </TableCell>
+                  <TableCell className="text-right">
+                    <div className="flex justify-end gap-2">
+                      <Button 
+                        variant="ghost" 
+                        size="icon" 
+                        className="rounded-xl hover:bg-zinc-100"
+                        onClick={() => {
+                          setEditingArtwork(artwork);
+                          setIsDialogOpen(true);
+                        }}
+                      >
+                        <Edit2 className="w-4 h-4 text-zinc-500" />
+                      </Button>
+                      <Button 
+                        variant="ghost" 
+                        size="icon" 
+                        className="rounded-xl hover:bg-red-50 hover:text-red-500"
+                        onClick={() => handleDeleteClick(artwork.id)}
+                      >
+                        <Trash2 className="w-4 h-4" />
+                      </Button>
+                    </div>
+                  </TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </div>
       </div>
       <Dialog open={isDeleteModalOpen} onOpenChange={setIsDeleteModalOpen}>
         <DialogContent className="max-w-md rounded-[2rem] p-8">

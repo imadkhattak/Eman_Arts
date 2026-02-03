@@ -33,8 +33,8 @@ export default function AdminDashboard() {
   return (
     <div className="space-y-8">
       <div>
-        <h1 className="text-3xl font-sans font-bold text-zinc-900">Dashboard Overview</h1>
-        <p className="text-zinc-500 font-sans">Welcome back, Alina. Here's what's happening with your gallery.</p>
+        <h1 className="text-3xl font-sans font-bold text-zinc-900 tracking-tight">Welcome, Eman</h1>
+        <p className="text-zinc-500 font-sans">Here's what's happening with your store today.</p>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">

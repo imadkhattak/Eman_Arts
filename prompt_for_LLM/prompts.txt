@@ -13,3 +13,9 @@
  be shown there. 
  2. In the checkout when is checking out also include user to phone number and address, and the shipping fee is not free. 
  It depends on the distance of the user from the artist.
+
+ Prompt: 3
+ 1. Now you have to make the website like suitable for every screen like mobile, tablet, desktop, etc, because i viewd on phone 
+ the ui was not proper. Everything looked so weird. Add the burger to the side to make it responsive. like the admin portal was not viewed correctly.
+ 2. Also add a close button to the side bar in the admin portal.
+ 3. Plus where ever the name is alina change it to Eman, like this is wesbite for Eman artist.

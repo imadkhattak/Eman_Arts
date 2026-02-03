@@ -20,7 +20,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Alina | Original Paintings & Art Collection",
+  title: "Eman | Original Paintings & Art Collection",
   description: "Explore and purchase original oil and acrylic paintings. A modern gallery experience for the discerning collector.",
 };
 

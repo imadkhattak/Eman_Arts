@@ -49,14 +49,14 @@ export default function HomeClient({ data }: HomeClientProps) {
             <p className="text-lg md:text-xl text-zinc-500 font-sans leading-relaxed max-w-lg">
               Experience a collection of original oil and acrylic paintings by {artistInfo.name}. Exploring the intersection of light, memory, and raw emotion.
             </p>
-            <div className="flex flex-wrap gap-5 pt-4">
-              <Link href="/shop">
-                <Button size="lg" className="rounded-full bg-zinc-900 text-white hover:bg-zinc-800 h-16 px-10 text-lg font-sans font-bold shadow-subtle-lg">
+            <div className="flex flex-wrap gap-4 md:gap-6 pt-4">
+              <Link href="/shop" className="w-full sm:w-auto">
+                <Button size="lg" className="w-full sm:w-auto rounded-full bg-zinc-900 text-white hover:bg-zinc-800 h-14 md:h-16 px-8 md:px-10 text-base md:text-lg font-sans font-bold shadow-subtle-lg">
                   View Collection
                 </Button>
               </Link>
-              <Link href="/artist">
-                <Button size="lg" variant="outline" className="rounded-full border-zinc-200 h-16 px-10 text-lg font-sans font-bold hover:bg-zinc-50">
+              <Link href="/artist" className="w-full sm:w-auto">
+                <Button size="lg" variant="outline" className="w-full sm:w-auto rounded-full border-zinc-200 h-14 md:h-16 px-8 md:px-10 text-base md:text-lg font-sans font-bold hover:bg-zinc-50">
                   The Artist
                 </Button>
               </Link>

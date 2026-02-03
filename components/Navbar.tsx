@@ -28,7 +28,7 @@ export function Navbar() {
         <div className="flex-1 flex items-center">
           <Link href="/" className="group">
             <h1 className="font-sans text-3xl font-bold tracking-tighter text-zinc-900 group-hover:opacity-70 transition-opacity">
-              ALINA
+              EMAN
             </h1>
           </Link>
         </div>
@@ -93,33 +93,60 @@ export function Navbar() {
         </div>
       </nav>
 
-      {/* Mobile Menu */}
+      {/* Mobile Menu Overlay */}
       <AnimatePresence>
         {isMobileMenuOpen && (
-          <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            className="fixed inset-0 z-40 bg-white pt-24 px-8 md:hidden"
-          >
-            <div className="flex flex-col gap-8 items-center pt-12">
-              {navLinks.map((link) => (
-                <Link
-                  key={link.name}
-                  href={link.href}
-                  className="text-2xl font-sans font-bold text-zinc-900"
-                  onClick={() => setIsMobileMenuOpen(false)}
-                >
-                  {link.name}
-                </Link>
-              ))}
-              <div className="flex gap-6 mt-8">
-                <a href="https://www.instagram.com/artfulsoul_lina/" target="_blank" rel="noopener noreferrer">
-                  <Instagram className="w-6 h-6 text-zinc-400" />
-                </a>
+          <>
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setIsMobileMenuOpen(false)}
+              className="fixed inset-0 z-40 bg-black/20 backdrop-blur-sm md:hidden"
+            />
+            <motion.div
+              initial={{ x: "100%" }}
+              animate={{ x: 0 }}
+              exit={{ x: "100%" }}
+              transition={{ type: "spring", damping: 25, stiffness: 200 }}
+              className="fixed inset-y-0 right-0 z-50 w-[80%] max-w-sm bg-white shadow-2xl md:hidden flex flex-col p-8"
+            >
+              <div className="flex justify-between items-center mb-12">
+                <h2 className="font-sans text-2xl font-bold tracking-tighter text-zinc-900">EMAN</h2>
+                <Button variant="ghost" size="icon" onClick={() => setIsMobileMenuOpen(false)}>
+                  <X className="w-6 h-6" />
+                </Button>
               </div>
-            </div>
-          </motion.div>
+
+              <div className="flex flex-col gap-8">
+                {navLinks.map((link) => (
+                  <Link
+                    key={link.name}
+                    href={link.href}
+                    className={cn(
+                      "text-3xl font-sans font-medium transition-colors",
+                      pathname === link.href ? "text-zinc-900" : "text-zinc-400"
+                    )}
+                    onClick={() => setIsMobileMenuOpen(false)}
+                  >
+                    {link.name}
+                  </Link>
+                ))}
+              </div>
+
+              <div className="mt-auto pt-8 border-t border-zinc-100">
+                <p className="text-xs uppercase tracking-widest text-zinc-400 mb-4 font-bold">Follow</p>
+                <div className="flex gap-6">
+                  <a href="https://www.instagram.com/artfulsoul_lina/" target="_blank" rel="noopener noreferrer" className="text-zinc-400 hover:text-zinc-900">
+                    <Instagram className="w-6 h-6" />
+                  </a>
+                  <a href="mailto:contact@eman-artist.com" className="text-zinc-400 hover:text-zinc-900">
+                    <Mail className="w-6 h-6" />
+                  </a>
+                </div>
+              </div>
+            </motion.div>
+          </>
         )}
       </AnimatePresence>
 

@@ -11,9 +11,12 @@ import {
   Settings, 
   LogOut,
   ExternalLink,
-  User
+  User,
+  Menu,
+  X
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
 
 
 
@@ -24,6 +27,7 @@ export default function AdminLayout({
 }) {
   const pathname = usePathname();
   const router = useRouter();
+  const [isSidebarOpen, setIsSidebarOpen] = React.useState(false);
 
   if (pathname === "/admin/login") return <>{children}</>;
 
@@ -43,11 +47,33 @@ export default function AdminLayout({
   ];
 
   return (
-    <div className="flex min-h-screen bg-zinc-50">
+    <div className="flex min-h-screen bg-zinc-50 relative">
+      {/* Mobile Header */}
+      <header className="fixed top-0 left-0 right-0 h-16 bg-zinc-900 border-b border-white/5 flex items-center justify-between px-4 z-40 lg:hidden">
+        <h1 className="text-xl font-serif tracking-tighter text-white">EMAN <span className="text-zinc-500 text-[10px] uppercase tracking-widest font-sans inline-block ml-2">Admin</span></h1>
+        <Button variant="ghost" size="icon" onClick={() => setIsSidebarOpen(true)} className="text-white hover:bg-white/10">
+          <Menu className="w-6 h-6" />
+        </Button>
+      </header>
+
+      {/* Sidebar Overlay (Mobile) */}
+      {isSidebarOpen && (
+        <div 
+          className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 lg:hidden"
+          onClick={() => setIsSidebarOpen(false)}
+        />
+      )}
+
       {/* Sidebar */}
-      <aside className="w-64 bg-zinc-900 text-white flex flex-col fixed inset-y-0 left-0 z-50">
-        <div className="p-8">
-          <h1 className="text-2xl font-serif tracking-tighter">ALINA <span className="text-zinc-500 text-xs uppercase tracking-widest block font-sans">Admin Portal</span></h1>
+      <aside className={cn(
+        "w-64 bg-zinc-900 text-white flex flex-col fixed inset-y-0 left-0 z-[60] transition-transform duration-300 transform lg:translate-x-0 lg:static lg:inset-auto",
+        isSidebarOpen ? "translate-x-0" : "-translate-x-full"
+      )}>
+        <div className="p-8 flex items-center justify-between">
+          <h1 className="text-2xl font-serif tracking-tighter">EMAN <span className="text-zinc-500 text-xs uppercase tracking-widest block font-sans">Admin Portal</span></h1>
+          <Button variant="ghost" size="icon" onClick={() => setIsSidebarOpen(false)} className="lg:hidden text-zinc-400 hover:text-white">
+            <X className="w-6 h-6" />
+          </Button>
         </div>
 
         <nav className="flex-1 px-4 space-y-2">
@@ -55,7 +81,7 @@ export default function AdminLayout({
             const Icon = item.icon;
             const isActive = pathname === item.href;
             return (
-              <Link key={item.href} href={item.href}>
+              <Link key={item.href} href={item.href} onClick={() => setIsSidebarOpen(false)}>
                 <div className={`flex items-center gap-3 px-4 py-3 rounded-xl transition-all ${
                   isActive 
                     ? "bg-white text-zinc-900" 
@@ -88,7 +114,7 @@ export default function AdminLayout({
       </aside>
 
       {/* Main Content */}
-      <main className="flex-1 ml-64 p-8">
+      <main className="flex-1 lg:ml-0 p-4 md:p-8 pt-20 lg:pt-8 min-w-0">
         <div className="max-w-7xl mx-auto">
           {children}
         </div>

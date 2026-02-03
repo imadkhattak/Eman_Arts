@@ -29,10 +29,9 @@ export default function ArtistClient({ data }: ArtistClientProps) {
               <h2 className="text-sm tracking-[0.3em] uppercase font-sans text-zinc-400 font-medium">
                 The Artist
               </h2>
-              <h1 className="text-4xl md:text-6xl font-sans text-zinc-900 leading-[1.1] tracking-tight">
-                About <br />
-                {artistInfo.name}
-              </h1>
+              <h1 className="text-6xl md:text-8xl font-serif text-zinc-900 leading-none">
+              Eman
+            </h1>
             </div>
             
             <div className="space-y-6 text-base md:text-lg text-zinc-600 font-sans leading-relaxed">
@@ -43,7 +42,7 @@ export default function ArtistClient({ data }: ArtistClientProps) {
               <a href={`https://www.instagram.com/${artistInfo.instagram}/`} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-zinc-500 hover:text-zinc-900 transition-colors">
                 <Instagram className="w-5 h-5" /> <span className="text-sm font-sans tracking-widest uppercase font-medium">Instagram</span>
               </a>
-              <a href="mailto:hello@alina-studio.com" className="flex items-center gap-2 text-zinc-500 hover:text-zinc-900 transition-colors">
+              <a href="mailto:hello@eman-studio.com" className="flex items-center gap-2 text-zinc-500 hover:text-zinc-900 transition-colors">
                 <Mail className="w-5 h-5" /> <span className="text-sm font-sans tracking-widest uppercase font-medium">Email</span>
               </a>
             </div>
@@ -99,7 +98,7 @@ export default function ArtistClient({ data }: ArtistClientProps) {
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 justify-center pt-8 max-w-2xl mx-auto">
             <div className="bg-white/5 p-8 rounded-3xl border border-white/10 space-y-3 hover:bg-white/10 transition-colors">
               <p className="text-zinc-400 text-xs uppercase tracking-[0.2em] font-bold font-sans">Enquiries</p>
-              <a href="mailto:hello@alina-studio.com" className="text-lg font-sans font-bold hover:text-white transition-colors block">hello@alina-studio.com</a>
+              <a href="mailto:hello@eman-studio.com" className="text-lg font-sans font-bold hover:text-white transition-colors block">hello@eman-studio.com</a>
             </div>
             <div className="bg-white/5 p-8 rounded-3xl border border-white/10 space-y-3 hover:bg-white/10 transition-colors">
               <p className="text-zinc-400 text-xs uppercase tracking-[0.2em] font-bold font-sans">WhatsApp</p>
