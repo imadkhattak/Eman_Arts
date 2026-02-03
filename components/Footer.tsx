@@ -54,7 +54,7 @@ export function Footer() {
                 WhatsApp Us <span className="w-4 h-4 flex items-center justify-center bg-[#25D366] rounded-full text-white text-[10px]">W</span>
               </a>
               <div className="flex gap-4 pt-2 md:justify-end">
-                <a href="https://www.instagram.com/artfulsoul_lina/" target="_blank" rel="noopener noreferrer">
+                <a href="https://www.instagram.com/imad_.khattak/" target="_blank" rel="noopener noreferrer">
                   <Instagram className="w-5 h-5 text-zinc-400 hover:text-zinc-900 cursor-pointer transition-colors" />
                 </a>
               </div>

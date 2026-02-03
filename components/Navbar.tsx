@@ -56,7 +56,7 @@ export function Navbar() {
 
         <div className="flex-1 flex items-center justify-end gap-2 md:gap-6">
           <a
-            href="https://www.instagram.com/artfulsoul_lina/"
+            href="https://www.instagram.com/imad_.khattak/"
             target="_blank"
             rel="noopener noreferrer"
             className="hidden md:flex items-center text-zinc-400 hover:text-zinc-900 transition-colors"
